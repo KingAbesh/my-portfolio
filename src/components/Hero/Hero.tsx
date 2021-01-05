@@ -84,9 +84,9 @@ export const Hero = () => {
             lineHeight="24px"
             my={8}
           >
-            I craft premium digital work for web, mobile and experiential with
+            I craft premium digital work for web and mobile with
             creative agencies and global brands alike – putting passion, pride
-            and plenty of elbow grease into everything I do.
+            and lots of grit into everything I do.
           </Text>
           <Flex
             flexWrap="wrap"
