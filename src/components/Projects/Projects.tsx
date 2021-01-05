@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { Header } from "../Header/Header";
 import wocman from "../../assets/images/wocman.png";
 import nuvle from "../../assets/images/nulve.png";
-import irecharge from "../../assets/images/irecharge.png";
-import accelerate from "../../assets/images/accelerate.png";
+// import irecharge from "../../assets/images/irecharge.png";
+// import accelerate from "../../assets/images/accelerate.png";
 import { useHistory } from "react-router-dom";
 import { isInViewport } from "../../utils/isInViewPort";
 
@@ -32,16 +32,16 @@ export const Projects = () => {
       href: "https://wocman.netlify.app",
       image: wocman,
     },
-    {
-      title: "Accelerate",
-      href: "https://accelerate-home.netlify.app",
-      image: accelerate,
-    },
-    {
-      title: "iRecharge",
-      href: "https://irecharge.com.ng",
-      image: irecharge,
-    },
+    // {
+    //   title: "Accelerate",
+    //   href: "https://accelerate-home.netlify.app",
+    //   image: accelerate,
+    // },
+    // {
+    //   title: "iRecharge",
+    //   href: "https://irecharge.com.ng",
+    //   image: irecharge,
+    // },
     {
       title: "Nuvle",
       href: "https://staging--nuvle.netlify.app",
@@ -109,7 +109,7 @@ interface ProjectItemProps {
 }
 
 const ProjectItem: React.FunctionComponent<ProjectItemProps> = (props) => {
-  const isThirdInSequence = props.index % 3 === 0;
+  const isThirdInSequence = props.index % 1 === 0;
 
   return (
     <Flex
