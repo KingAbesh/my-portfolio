@@ -1,38 +1,43 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import * as React from "react";
+import { ChakraProvider, Box, theme, Text, Flex } from "@chakra-ui/react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import { Home } from "./containers/Home/Home";
+import "./App.css";
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+export const App = () => {
+  const routes = [{ path: "/", name: "Home", Component: Home }];
+  return (
+    <ChakraProvider theme={theme}>
+      <Box textAlign="center">
+        <BrowserRouter>
+          <Switch>
+            {routes.map(({ path, Component }) => (
+              <Route key={path} exact={true} path={path}>
+                {({ match }) => (
+                  <CSSTransition
+                    in={match != null}
+                    timeout={{ enter: 300, exit: 150 }}
+                    unmountOnExit
+                  >
+                    <Component />
+                  </CSSTransition>
+                )}
+              </Route>
+            ))}
+            <Redirect from="*" to="/" />
+            <Route
+              render={() => (
+                <Flex justify="center" align="center" h="100vh">
+                  <Text fontFamily="Poppins" fontWeight="bold" color="white">
+                    Oops, this page does not exist
+                  </Text>
+                </Flex>
+              )}
+            />
+          </Switch>
+        </BrowserRouter>
+      </Box>
+    </ChakraProvider>
+  );
+};
