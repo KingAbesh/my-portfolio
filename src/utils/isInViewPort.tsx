@@ -1,6 +1,17 @@
 export function isInViewport(
   el: React.MutableRefObject<HTMLDivElement | undefined>
 ) {
+  const half = window.innerHeight / 2;
+
+  return (
+    window.scrollY + half > (el.current as any)?.offsetTop &&
+    window.scrollY + half <
+      (el.current as any)?.offsetTop + (el.current as any)?.scrollHeight
+  );
+}
+
+
+
   //   const rect = el.current?.getBoundingClientRect();
   //   const elemTop = rect?.top;
   //   const elemBottom = rect?.bottom;
@@ -20,12 +31,3 @@ export function isInViewport(
   //       (window.innerHeight || document.documentElement.clientHeight) &&
   //     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   //   );
-
-  const half = window.innerHeight / 2;
-
-  return (
-    window.scrollY + half > (el.current as any)?.offsetTop &&
-    window.scrollY + half <
-      (el.current as any)?.offsetTop + (el.current as any)?.scrollHeight
-  );
-}

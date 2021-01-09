@@ -84,9 +84,9 @@ export const Hero = () => {
             lineHeight="24px"
             my={8}
           >
-            I craft premium digital work for web and mobile with
-            creative agencies and global brands alike – putting passion, pride
-            and lots of grit into everything I do.
+            I craft premium digital work for web and mobile with creative
+            agencies and global brands alike – putting passion, pride and lots
+            of grit into everything I do.
           </Text>
           <Flex
             flexWrap="wrap"
@@ -119,6 +119,7 @@ export const Hero = () => {
             src={portfolio}
             h={{ base: "50%", xl: "110%" }}
             w={{ base: "100%", xl: "68%" }}
+            d={{ base: "none", xl: "block" }}
             objectFit="cover"
             mx="auto"
             borderRadius="8px"

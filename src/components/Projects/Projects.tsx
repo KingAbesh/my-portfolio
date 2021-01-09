@@ -21,7 +21,6 @@ export const Projects = () => {
 
   const handleScroll = () => {
     if (isInViewport(ref)) {
-      console.log("project");
       history.push(window.location.pathname + "#projects");
     }
   };
