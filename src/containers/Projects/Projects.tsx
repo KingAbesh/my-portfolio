@@ -1,29 +1,23 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
-import React, { useEffect, useRef } from "react";
-import { Header } from "../Header/Header";
+import { Box, Flex, Icon, Link, Text } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { Header } from "../../components/Header/Header";
 import wocman from "../../assets/images/wocman.png";
 import nuvle from "../../assets/images/nulve.png";
 import irecharge from "../../assets/images/irecharge.png";
 import accelerate from "../../assets/images/accelerate.png";
+import foodDelivery from "../../assets/images/food-delivery.png";
+import logistics from "../../assets/images/logistics.png";
+import todma from "../../assets/images/todma.png";
 import { useHistory } from "react-router-dom";
-import { isInViewport } from "../../utils/isInViewPort";
+import { shuffleArray } from "../../utils/helper";
 
 export const Projects = () => {
   const history = useHistory();
 
-  const ref = useRef<HTMLDivElement>();
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
-
-  const handleScroll = () => {
-    if (isInViewport(ref)) {
-      history.push(window.location.pathname + "#projects");
-    }
-  };
+    window.scrollTo(0, 0);
+  }, []);
 
   const projects: Array<{ title: string; href: string; image: string }> = [
     {
@@ -46,20 +40,44 @@ export const Projects = () => {
       href: "https://staging--nuvle.netlify.app",
       image: nuvle,
     },
+    {
+      title: "Todma Traffic Offenders Dashboard",
+      href: "http://www.todma.istrategytech.com/#/admin/dashboard",
+      image: todma,
+    },
+    {
+      title: "Logistics Dashboard",
+      href: "http://logistic-admin.istrategytech.com/",
+      image: logistics,
+    },
+    {
+      title: "Food Delivery Dashboard",
+      href: "https://foodadmin.istrategytech.com/",
+      image: foodDelivery,
+    },
   ];
-	
+
+  const shuffledArray = shuffleArray(projects);
 
   return (
     <Box
-      mt={{ base: 8, md: 16, xl: 48 }}
+      my={{ base: 8, md: 8 }}
       px={{ base: 6, md: 24, xl: 32 }}
-      ref={ref as React.RefObject<HTMLDivElement>}
       id="projects"
       //   backgroundColor="#FAFBFE"
     >
-      <Header primaryText="Here are" secondaryText="some of my works" />
+      <Flex mb={8} width="fit-content">
+        <Icon
+          as={AiOutlineArrowLeft}
+          onClick={() => history.push("/")}
+          cursor="pointer"
+          h={{ base: 6, md: 8 }}
+          w={{ base: 6, md: 8 }}
+        />
+      </Flex>
+      <Header primaryText="My Works" secondaryText="" />
       <Flex flexWrap="wrap" justify="space-between">
-        {projects.map((item, index) => {
+        {shuffledArray.map((item, index) => {
           return (
             <ProjectItem
               key={index}
@@ -71,12 +89,14 @@ export const Projects = () => {
           );
         })}
       </Flex>
-      <Flex mt={8} mb={{ base: 8, md: 16 }} onClick={() => history.push("/projects")}>
+      <Flex mt={8} mb={{ base: 8, md: 16 }} onClick={() => history.push("/")}>
         <Box
           as={Link}
           position="relative"
           textAlign="start"
+          to="/"
           mr="auto"
+          zIndex="1"
           fontFamily="Poppins"
           fontWeight="600"
           fontSize={{ base: "1.4rem", md: "2rem" }}
@@ -94,7 +114,7 @@ export const Projects = () => {
             zIndex: "-1",
           }}
         >
-          View More
+          Go Home
         </Box>
       </Flex>
     </Box>
@@ -109,7 +129,7 @@ interface ProjectItemProps {
 }
 
 const ProjectItem: React.FunctionComponent<ProjectItemProps> = (props) => {
-  const isThirdInSequence = props.index % 3 === 0;
+  const isThirdInSequence = props.index % 1 === 0;
 
   return (
     <Flex

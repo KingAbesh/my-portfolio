@@ -36,7 +36,7 @@ export const Hero = () => {
       overflowX="visible"
       id="home"
       ref={ref as React.RefObject<HTMLDivElement>}
-      mt={{ base: "20vh", lg: "10vh" }}
+      mt={{ base: "16vh", lg: "14vh" }}
       //   backgroundColor="#FAFBFE"
       px={{ base: 4, md: 12, xl: 16 }}
     >

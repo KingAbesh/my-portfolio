@@ -4,9 +4,13 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { Home } from "./containers/Home/Home";
 import "./App.css";
+import { Projects } from "./containers/Projects/Projects";
 
 export const App = () => {
-  const routes = [{ path: "/", name: "Home", Component: Home }];
+  const routes = [
+    { path: "/", name: "Home", Component: Home },
+    { path: "/projects", name: "Home", Component: Projects },
+  ];
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center">
