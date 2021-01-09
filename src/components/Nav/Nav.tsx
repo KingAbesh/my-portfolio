@@ -92,6 +92,7 @@ export const NavBar = () => {
             src={logo}
             mt={16}
             ml="-3rem"
+            loading="eager"
             h="120px"
             zIndex="-1"
           />
@@ -152,6 +153,7 @@ export const NavBar = () => {
           <Flex flex="1" bg="transparent" justify="center" align="center">
             <Image
               objectFit="cover"
+              loading="eager"
               alt="abasifreke logo"
               src={logo}
               mt={16}
