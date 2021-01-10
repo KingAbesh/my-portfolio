@@ -8,7 +8,7 @@ import { Projects } from "../../components/Projects/Projects";
 import { ServicesOffered } from "../../components/ServicesOffered/ServicesOffered";
 import { Socials } from "../../components/Socials/Socials";
 
-export const Home = () => {
+const Home = () => {
   return (
     <Box
       zIndex="2"
@@ -26,3 +26,5 @@ export const Home = () => {
     </Box>
   );
 };
+
+export default Home;

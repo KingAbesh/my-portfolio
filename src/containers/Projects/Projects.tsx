@@ -12,7 +12,7 @@ import todma from "../../assets/images/todma.png";
 import { useHistory } from "react-router-dom";
 import { shuffleArray } from "../../utils/helper";
 
-export const Projects = () => {
+const Projects = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -167,3 +167,5 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = (props) => {
     </Flex>
   );
 };
+
+export default Projects;
