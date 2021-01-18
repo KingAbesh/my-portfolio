@@ -10,13 +10,13 @@ const ImageWrapper = styled.div`
 
 const loadingAnimation = keyframes`
   0% {
-    background-color: #fff;
+    background-color: #D5ECFF;
   }
   50% {
-    background-color: #ccc;
+    background-color: #E6F2FC;
   }
   100% {
-    background-color: #fff;
+    background-color: #D5ECFF;
   }
 `;
 
