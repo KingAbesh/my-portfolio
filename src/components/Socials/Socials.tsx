@@ -80,7 +80,7 @@ export const Socials = () => {
       <Flex flexWrap="wrap" justify="center" my={{ base: 6, md: 12, xl: 16 }}>
         {social.map((item, index) => {
           return (
-            <SocialItem src={item.icon} title={item.title} href={item.href} />
+            <SocialItem src={item.icon} title={item.title} href={item.href} key={index} />
           );
         })}
       </Flex>
