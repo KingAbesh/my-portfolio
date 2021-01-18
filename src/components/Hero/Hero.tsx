@@ -121,7 +121,7 @@ export const Hero = () => {
             w={{ base: "100%", xl: "68%" }}
             d={{ base: "none", xl: "block" }}
             objectFit="cover"
-            loading="eager"
+            loading="lazy"
             mx="auto"
             borderRadius="8px"
           />

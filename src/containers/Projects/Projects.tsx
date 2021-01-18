@@ -11,6 +11,7 @@ import logistics from "../../assets/images/logistics.png";
 import todma from "../../assets/images/todma.png";
 import { useHistory } from "react-router-dom";
 import { shuffleArray } from "../../utils/helper";
+import LazyImage from "../../components/LazyImage/LazyImage";
 
 const Projects = () => {
   const history = useHistory();
@@ -132,38 +133,75 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = (props) => {
   const isThirdInSequence = props.index % 1 === 0;
 
   return (
+    // <Flex
+    //   backgroundSize="cover"
+    //   cursor="pointer"
+    //   backgroundRepeat="no-repeat"
+    //   backgroundPosition="top center"
+    //   //   backgroundImage={`url(${props.image})`}
+    //   backgroundImage={`linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url(${props.image})`}
+    //   width={{ base: "100%", lg: isThirdInSequence ? "100%" : "48%" }}
+    //   h={{ base: "300px", xl: `${isThirdInSequence ? "600px" : "500px"}` }}
+    //   borderRadius="8px"
+    //   my={4}
+    //   alignItems="flex-end"
+    //   overflow="hidden"
+    //   transition="0.3s ease-out"
+    //   _hover={{
+    //     transform: "scale(0.95)",
+    //     backgroundImage: `linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.4) 100%), url(${props.image})`,
+    //   }}
+    //   p={{ base: 4, md: 8, xl: 12 }}
+    //   onClick={() => window.open(props.href, "_blank")}
+    // >
+    //   <Text
+    //     color="white"
+    //     fontFamily="Poppins"
+    //     h="fit-content"
+    //     fontSize={{ base: "1.4rem", md: "2rem" }}
+    //     fontWeight="600"
+    //     lineHeight="43px"
+    //     letterSpacing="0.396px"
+    //   >
+    //     {props.title}
+    //   </Text>
+    // </Flex>
     <Flex
-      backgroundSize="cover"
       cursor="pointer"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="top center"
-      //   backgroundImage={`url(${props.image})`}
-      backgroundImage={`linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url(${props.image})`}
       width={{ base: "100%", lg: isThirdInSequence ? "100%" : "48%" }}
-      h={{ base: "300px", xl: `${isThirdInSequence ? "600px" : "500px"}` }}
       borderRadius="8px"
-      my={4}
-      alignItems="flex-end"
+      my={{ base: 4, md: 8 }}
       overflow="hidden"
+      position="relative"
       transition="0.3s ease-out"
       _hover={{
         transform: "scale(0.95)",
-        backgroundImage: `linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.4) 100%), url(${props.image})`,
+        // backgroundImage: `linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.4) 100%), url(${props.image})`,
       }}
-      p={{ base: 4, md: 8, xl: 12 }}
+      //   p={{ base: 4, md: 8, xl: 12 }}
       onClick={() => window.open(props.href, "_blank")}
     >
-      <Text
-        color="white"
-        fontFamily="Poppins"
-        h="fit-content"
-        fontSize={{ base: "1.4rem", md: "2rem" }}
-        fontWeight="600"
-        lineHeight="43px"
-        letterSpacing="0.396px"
+      <LazyImage src={props.image} alt={props.title} />
+      <Flex
+        position="absolute"
+        background="linear-gradient(180deg, rgba(174, 26, 26, 0) 0%, rgba(0, 0, 0, 0.4) 100%)"
+        p={{ base: 2, md: 8 }}
+        bottom="0"
+        w="100%"
       >
-        {props.title}
-      </Text>
+        <Text
+          color="white"
+          fontFamily="Poppins"
+          h="fit-content"
+          textAlign="start"
+          fontSize={{ base: "1.2rem", md: "2rem" }}
+          fontWeight="600"
+          lineHeight="23px"
+          letterSpacing="0.396px"
+        >
+          {props.title}
+        </Text>
+      </Flex>
     </Flex>
   );
 };
